@@ -1,5 +1,8 @@
 package com.example.project_final_2.entity.product;
 
+import com.example.project_final_2.entity.cart.CartItem;
+import com.example.project_final_2.entity.invoice.InvoiceItems;
+import com.example.project_final_2.entity.user.Rating;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +11,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -19,33 +23,50 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "productId")
+    private Long id;
 
-    @Column(name = "availiableQuantity")
-    private Integer availiableQuantity;
+    @Column(name = "instock")
+    private int availiableQuantity;
 
-    @Column(name = "availiableQuantity")
+    @Column(name = "manufacturedFactory")
     private String manufacturedFactory;
 
-    @Column(name = "availiableQuantity")
-    private Integer maxQuantity;
+    @Column(name = "maxQuantity")
+    private int maxQuantity;
 
-    @Column(name = "availiableQuantity")
-    private String nameProduct;
+    @Column(name = "productName")
+    private String productName;
 
-    @Column(name = "availiableQuantity")
-    private Integer price;
+    @Column(name = "price")
+    private int price;
 
-    @Column(name = "availiableQuantity")
-    private Integer ratingScore;
+    @Column(name = "ratingScore")
+    private int ratingScore;
 
-    @Column(name = "availiableQuantity")
+    @Column(name = "origin")
     private String origin;
+
+    @ManyToOne
+    @JoinColumn(name = "category")
+    private Category category;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
     @JsonIgnore
     private List<Image> images;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+    @JsonIgnore
+    private Set<CartItem> cart_item;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+    @JsonIgnore
+    private Set<InvoiceItems> invoice_items;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+    @JsonIgnore
+    private List<Rating> ratings;
+
 
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
 //    @JsonIgnore

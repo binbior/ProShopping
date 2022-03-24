@@ -21,7 +21,7 @@ public class User{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "userId")
     private Integer id;
 
     @Column(name = "full_name")
@@ -50,5 +50,8 @@ public class User{
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Image> images;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Rating> ratings;
 
 }

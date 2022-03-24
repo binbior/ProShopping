@@ -1,5 +1,6 @@
 package com.example.project_final_2.entity.cart;
 
+import com.example.project_final_2.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,4 +26,8 @@ public class Cart {
 
     @OneToMany(mappedBy="cart")
     private Set<CartItem> cart_item;
+
+    @ManyToOne
+    @JoinColumn(name = "user")
+    private User user;
 }

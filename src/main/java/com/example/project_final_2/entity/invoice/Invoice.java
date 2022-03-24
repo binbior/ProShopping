@@ -1,5 +1,6 @@
 package com.example.project_final_2.entity.invoice;
 
+import com.example.project_final_2.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,4 +30,7 @@ public class Invoice {
     @OneToMany(mappedBy = "invoice")
     private Set<InvoiceItems> invoice_items;
 
+    @ManyToOne
+    @JoinColumn(name = "user")
+    private User user;
 }
