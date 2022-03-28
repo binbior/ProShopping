@@ -28,6 +28,6 @@ public class Cart {
     private Set<CartItem> cart_item;
 
     @ManyToOne
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "userId")
     private User user;
 }

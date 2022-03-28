@@ -48,7 +48,7 @@ public class Product {
     private String origin;
 
     @ManyToOne
-    @JoinColumn(name = "category")
+    @JoinColumn(name = "categoryId")
     private Category category;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")

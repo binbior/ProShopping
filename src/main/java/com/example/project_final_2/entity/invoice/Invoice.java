@@ -31,6 +31,6 @@ public class Invoice {
     private Set<InvoiceItems> invoice_items;
 
     @ManyToOne
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "userId")
     private User user;
 }

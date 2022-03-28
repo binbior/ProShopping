@@ -19,11 +19,11 @@ public class Rating {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "product")
+    @JoinColumn(name = "productId")
     private Product product;
 
     @ManyToOne
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "userId")
     private User user;
 
     @Column(name = "comment")
