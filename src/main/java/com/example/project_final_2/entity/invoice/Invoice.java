@@ -1,11 +1,13 @@
 package com.example.project_final_2.entity.invoice;
 
+import com.example.project_final_2.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
@@ -14,7 +16,10 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "invoice")
-public class Invoice {
+public class Invoice implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @Column(name = "invoiceId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,4 +34,7 @@ public class Invoice {
     @OneToMany(mappedBy = "invoice")
     private Set<InvoiceItems> invoice_items;
 
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
 }

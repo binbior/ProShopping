@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.Instant;
 
 @Entity
@@ -13,15 +14,17 @@ import java.time.Instant;
 @Setter
 @Getter
 @NoArgsConstructor
-public class RefeshToken {
+public class RefeshToken implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "user_id", nullable = false, unique = true, referencedColumnName = "id")
+    @JoinColumn(name = "user_id", nullable = false, unique = true, referencedColumnName = "userId")
     private User user;
 
     @Column(name = "token", nullable = false, unique = true)
