@@ -26,7 +26,11 @@ public class User implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userId")
+<<<<<<< HEAD
     private Long id;
+=======
+    private Integer id;
+>>>>>>> 1d8aa45aee33f116563cf7d6d5d8f2fdba87d6f0
 
     @Column(name = "full_name")
     private String fullName;
@@ -58,10 +62,13 @@ public class User implements Serializable{
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Rating> ratings;
 
+<<<<<<< HEAD
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
+=======
+>>>>>>> 1d8aa45aee33f116563cf7d6d5d8f2fdba87d6f0
 }

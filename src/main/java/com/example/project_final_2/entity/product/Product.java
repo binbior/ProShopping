@@ -28,7 +28,11 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "productId")
+<<<<<<< HEAD
     private long id;
+=======
+    private Long id;
+>>>>>>> 1d8aa45aee33f116563cf7d6d5d8f2fdba87d6f0
 
     @Column(name = "instock")
     private int availiableQuantity;
@@ -46,7 +50,11 @@ public class Product implements Serializable {
     private int price;
 
     @Column(name = "ratingScore")
+<<<<<<< HEAD
     private float ratingScore;
+=======
+    private int ratingScore;
+>>>>>>> 1d8aa45aee33f116563cf7d6d5d8f2fdba87d6f0
 
     @Column(name = "origin")
     private String origin;
@@ -59,6 +67,7 @@ public class Product implements Serializable {
     private List<Image> images;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+<<<<<<< HEAD
     private Set<CartItem> cart_item;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
@@ -67,6 +76,20 @@ public class Product implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
     private List<Rating> ratings;
 
+=======
+    @JsonIgnore
+    private Set<CartItem> cart_item;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+    @JsonIgnore
+    private Set<InvoiceItems> invoice_items;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+    @JsonIgnore
+    private List<Rating> ratings;
+
+
+>>>>>>> 1d8aa45aee33f116563cf7d6d5d8f2fdba87d6f0
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
 //    @JsonIgnore
 //    private
